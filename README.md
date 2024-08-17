@@ -1,67 +1,45 @@
-# dsda-doom v0.28.0
-This is a successor of prboom+ with many new features, including:
-- Heretic, Hexen, MBF21, Doom-in-Hexen, UDMF, and MAPINFO support
-- In-game console and scripting
-- Full controller support
-- Palette-based opengl renderer
-- Debugging features for testing
-- Strict mode for speedrunning
-- Various quality of life improvements
-- Advanced tools for TASing
-- Rewind
+# DSDA-Doom (AeriaVelocity fork)
 
-Download windows releases [here](https://drive.google.com/drive/folders/1KMU1dY0HZrY5h2EyPzxxXuyH8DunAJV_?usp=sharing).
+> [!NOTE]
+> This README specifically pertains to this fork of DSDA-Doom. For the original
+> project, see
+> [https://github.com/kraflab/dsda-doom](https://github.com/kraflab/dsda-doom).
+> The original README is available at [README-ORIG.md](README-ORIG.md).
 
-### Patch Notes
-- [v0.28](./patch_notes/v0.28.md)
-- [v0.27](./patch_notes/v0.27.md)
-- [v0.26](./patch_notes/v0.26.md)
+## Why a fork?
 
-### Launcher
-There is a dedicated launcher for this port available [here](https://github.com/Pedro-Beirao/dsda-launcher) by PBeGood4.
+I decided to fork DSDA-Doom for symbolic reasons, because it's my new favourite
+source port of DOOM (as of 2024-08-17). I'm probably not going to make any
+changes or improvements - this is just so I can have my own fork of the source
+port I like.
 
-### Doom-in-Hexen Support
-- [Full details](./docs/doom_in_hexen.md)
+## Building
 
-### UDMF Support
-- [Full details](./docs/udmf.md)
+These build instructions are for Fedora. YMMV for other Linuxes (Linuces?) or
+other operating systems or devices.
 
-### MAPINFO Support
-- [Full details](./docs/mapinfo.md)
+### Dependencies
 
-### Hexen Support
-- DSDA-Doom includes demo-compatible support for hexen.
-  - Use -iwad HEXEN.WAD (-file HEXDD.WAD for the expansion)
-    - Or drag wads onto the exe
-  - You can force hexen engine behaviour with `-hexen` (shouldn't be necessary)
-- Don't need to supply complevel (hexen is complevel 0 by necessity)
-- Known issues
-  - Setting the "Status Bar and Menu Appearance" option to "not adjusted" will have no effect for hexen (it will default instead to "Doom format")
-  - The "Apply multisampling" automap option is disabled for hexen
-  - Automap colors are not configurable for hexen
-  - Some of the more advanced features are not implemented for hexen yet, and using them may cause crashes or other odd behaviour.
-  - Some menus extend over the hud.
-  - Monster counter doesn't work as expected, due to cluster format (ex hud / levelstat)
-  - Hexen-style skies aren't implemented yet (layering, etc)
-  - The ALTSHADOW thing flag isn't affecting the rendering
-  - Dynamic fade palettes aren't being used
-  - The yellow message variant isn't implemented
+```sh
+sudo dnf install cmake gcc gcc-c++ clang pkg-config mesa-libGL-devel libzip-devel SDL2-devel SDL2_mixer-devel zlib-devel SDL2_image-devel libmad-devel fluidsynth-devel dumb-devel libvorbis-devel portmidi-devel freeglut-devel
+```
 
-### Heretic Support
-- DSDA-Doom includes demo-compatible support for heretic (all the demos stored on dsda are in sync).
-- Heretic game logic should be set automatically if you use `HERETIC.WAD` as the iwad. If it doesn't work, please use the `-heretic` commandline option. This flips a switch in the engine that determines all the core game data.
-- Don't need to supply complevel (heretic is complevel 0 by necessity)
-- Known issues
-  - Setting the "Status Bar and Menu Appearance" option to "not adjusted" will have no effect for heretic (it will default instead to "Doom format").
-  - The "Apply multisampling" automap option is disabled for heretic.
-  - Automap colors are not configurable for heretic.
-  - Some of the more advanced features are not implemented for heretic yet, and using them may cause crashes or other odd behaviour.
-  - Dehacked support for heretic isn't implemented yet.
-  - Some menus extend over the hud.
+### Cloning
 
-### Other Standards
-- [MBF21 v1.4](https://github.com/kraflab/mbf21)
-- [UMAPINFO v2.2](https://github.com/kraflab/umapinfo)
+```sh
+git clone https://github.com/AeriaVelocity/dsda-doom.git
+```
 
-### Credits
-- The DSDA-Doom icon was designed by Mal (129thVisplane). Thanks!
+### Building & Installing
+
+```sh
+cd dsda-doom
+cmake prboom2
+make
+sudo make install
+```
+
+## Licence
+
+DSDA-Doom is licensed under GPLv2+ (GNU General Public License 2.0 or later),
+as was PrBoom+, Boom and the original DOOM before it.
